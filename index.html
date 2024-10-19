@@ -27,8 +27,30 @@
             return ComputerPick;
         }
 
+        function GetHumanChoice(){/* Get human choice*/
+            let playerNumberPick=parseInt(prompt("Pick a number: \n 1-Rock \n 2-Paper \n 3-Scissors"));
+
+            while(!(playerNumberPick>=1&&playerNumberPick<=3)){
+                playerNumberPick=parseInt(prompt("Invalid Number: please pick a number again:\n 1-Rock \n 2-Paper \n 3-Scissors" ))
+            }
+            let Player_Choice="";
+            if(playerNumberPick==1){
+                Player_Choice="Rock";
+            }
+            else if(playerNumberPick==2){
+                Player_Choice="Paper";
+            }
+            else{
+                Player_Choice="Scissors";
+            }
+            return Player_Choice;
+
+        }
+
         function RockPaperScissors(){ /*Main game*/
             let Computer_Choice=ComputerChoice();
+            let Player_Choice=GetHumanChoice();
+            console.log(Player_Choice);
            
         }
 
