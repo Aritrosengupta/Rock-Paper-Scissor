@@ -32,7 +32,7 @@
         function GetHumanChoice(){/* Get human choice*/
             let playerNumberPick=parseInt(prompt("Pick a number: \n 1-Rock \n 2-Paper \n 3-Scissors"));
 
-            while((isNan(playerNumberPick||playerNumberPick<1||playerNumberPick>3)){
+            while((isNaN(playerNumberPick)||playerNumberPick<1||playerNumberPick>3)){
                 playerNumberPick=parseInt(prompt("Invalid Number: please pick a number again:\n 1-Rock \n 2-Paper \n 3-Scissors" ))
             }
             let Player_Choice="";
@@ -82,13 +82,13 @@
 
         }
 
-        function PlayGame(){
+        function PlayGame(){/* Play x number of rounds*/
             let counter=5;
             while (counter>0){
                 let Computer_Choice=ComputerChoice();
-                console.log(Computer_Choice);
+                // console.log(Computer_Choice);
                 let Player_Choice=GetHumanChoice();
-                console.log(Player_Choice);
+                // console.log(Player_Choice);
                 PlayRound(Computer_Choice,Player_Choice);
                 counter--;
             }
@@ -105,6 +105,11 @@
         }
        
       PlayGame();
+
+      /*Features to be added
+      1-User gets to choose number of rounds
+      2-Score shown every round
+      3-Give a restart functionality*/
 
 
     </script>
