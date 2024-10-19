@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    
+
+
+    <script>
+        function ComputerChoice(){ /*Computer Choice for Rock Paper scissor*/
+
+            let RandomNumber=Math.floor(Math.random()*3);
+            let ComputerPick="";
+
+            if(RandomNumber==0){
+                ComputerPick="Rock";
+            }
+            else if(RandomNumber==1){
+                ComputerPick="Paper";
+            }
+            else{
+                ComputerPick="Scissors";
+            }
+            return ComputerPick;
+        }
+
+        function RockPaperScissors(){ /*Main game*/
+            let Computer_Choice=ComputerChoice();
+           
+        }
+
+
+    </script>
+</body>
+</html>
