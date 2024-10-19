@@ -32,7 +32,7 @@
         function GetHumanChoice(){/* Get human choice*/
             let playerNumberPick=parseInt(prompt("Pick a number: \n 1-Rock \n 2-Paper \n 3-Scissors"));
 
-            while(!(playerNumberPick>=1&&playerNumberPick<=3)){
+            while((isNan(playerNumberPick||playerNumberPick<1||playerNumberPick>3)){
                 playerNumberPick=parseInt(prompt("Invalid Number: please pick a number again:\n 1-Rock \n 2-Paper \n 3-Scissors" ))
             }
             let Player_Choice="";
@@ -53,7 +53,7 @@
              
             if(ComputerChoice=="Rock" && HumanChoice=="Paper"){
                 HumanScore+=1;
-                Console.log(`You Win! ${HumanChoice} beats ${ComputerChoice}`);
+                console.log(`You Win! ${HumanChoice} beats ${ComputerChoice}`);
             }
             else if(ComputerChoice=="Rock" && HumanChoice=="Scissors"){
                 ComputerScore+=1;
@@ -82,18 +82,29 @@
 
         }
 
-        function RockPaperScissors(){ /*Main game*/
-            let Computer_Choice=ComputerChoice();
-            console.log(Computer_Choice);
-            let Player_Choice=GetHumanChoice();
-            console.log(Player_Choice);
+        function PlayGame(){
+            let counter=5;
+            while (counter>0){
+                let Computer_Choice=ComputerChoice();
+                console.log(Computer_Choice);
+                let Player_Choice=GetHumanChoice();
+                console.log(Player_Choice);
+                PlayRound(Computer_Choice,Player_Choice);
+                counter--;
+            }
+            if (ComputerScore>HumanScore){
+                console.log(`You Lost! Your Score was ${HumanScore} and computer's score was ${ComputerScore}`);
+            }
+            else if(HumanScore>ComputerScore){
+                console.log(`You Won!!! Your Score was ${HumanScore} and Computer Score was ${ComputerScore}`);
+            }
+            else{
+                console.log(`It's a draw you both score ${HumanScore}`);
+            }
             
-            PlayRound(Computer_Choice,Player_Choice);
-            console.log(`Computer Score ${ComputerScore}`)
-            console.log(`Player Score ${HumanScore}`);
-           
-           
         }
+       
+      PlayGame();
 
 
     </script>
