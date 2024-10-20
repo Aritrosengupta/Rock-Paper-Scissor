@@ -83,13 +83,18 @@
         }
 
         function PlayGame(){/* Play x number of rounds*/
-            let counter=5;
+            let counter=parseInt(prompt("Chose how many number of rounds you want to play"));
+
+            while(counter==0 || isNaN(counter)){
+                counter=parseInt(Prompt("Please choose a Valid number for rounds"));
+            }
             while (counter>0){
                 let Computer_Choice=ComputerChoice();
                 // console.log(Computer_Choice);
                 let Player_Choice=GetHumanChoice();
                 // console.log(Player_Choice);
                 PlayRound(Computer_Choice,Player_Choice);
+                console.log(`User Score: ${HumanScore} and Computer Score: ${ComputerScore}`)
                 counter--;
             }
             if (ComputerScore>HumanScore){
@@ -106,9 +111,33 @@
        
       PlayGame();
 
+      let PlayAgain;//Restart Functionality
+
+      let AskUser=prompt("Do you want to play again Yes/No");
+
+      if (AskUser=="Yes" || AskUser=="yes"){
+        PlayAgain=true;
+        ComputerScore=0;
+        HumanScore=0;
+      }else{
+        PlayAgain=false;
+      }
+
+      while(PlayAgain==true){
+        PlayGame();
+        AskUser=prompt("Do you want to play again Yes/No");
+        if (AskUser=="Yes" || AskUser=="yes"){
+        PlayAgain=true;
+        ComputerScore=0;
+        HumanScore=0;
+      }else{
+        PlayAgain=false;
+      }
+      }
+
       /*Features to be added
-      1-User gets to choose number of rounds
-      2-Score shown every round
+      1-User gets to choose number of rounds -Done
+      2-Score shown every round-done
       3-Give a restart functionality*/
 
 
