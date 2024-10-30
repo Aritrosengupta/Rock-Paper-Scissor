@@ -3,14 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock Paper Scissors</title>
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <h1>Rock Paper Scissors Game</h1>
+    <h3>First player to reach 5 points win</h3>
     
+    <div class="container">
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissors">Scissors</button>
+    </div>
+    <br/>
+    <br>
+    <div id="list">
+    <div id="text"></div>
+    <div id="scores"></div>
+    <div id="result"></div>
+</div>
 
 
     <script>
-         let HumanScore=0;
+        let rock=document.querySelector("#rock");
+        let paper=document.querySelector("#paper");
+        let scissors=document.querySelector("#scissors");
+        let RoundText=document.querySelector("#text");
+        let result=document.querySelector("#result");
+        let score=document.querySelector("#scores");
+
+        rock.addEventListener('click',function(){
+            let human_choice='Rock';
+            if(HumanScore==5 || ComputerScore==5){
+                Results();
+            }else{
+                PlayGame(human_choice);
+            }
+          
+           
+        })
+        paper.addEventListener('click',function(){
+            let human_choice='Paper';
+          
+            if(HumanScore==5 || ComputerScore==5){
+                Results();
+            }else{
+                PlayGame(human_choice);
+            }
+        })
+        scissors.addEventListener('click',function(){
+            let human_choice='Scissors';
+          
+            if(HumanScore==5 || ComputerScore==5){
+                Results();
+            }else{
+                PlayGame(human_choice);
+            }
+        })
+
+
+
+        let HumanScore=0;
          let ComputerScore=0;
         function ComputerChoice(){ /*Computer Choice for Rock Paper scissor*/
 
@@ -29,117 +82,84 @@
             return ComputerPick;
         }
 
-        function GetHumanChoice(){/* Get human choice*/
-            let playerNumberPick=parseInt(prompt("Pick a number: \n 1-Rock \n 2-Paper \n 3-Scissors"));
+        function PlayGame(human_choice){/* Play x number of rounds*/
+            // let counter=parseInt(prompt("Chose how many number of rounds you want to play"));
 
-            while((isNaN(playerNumberPick)||playerNumberPick<1||playerNumberPick>3)){
-                playerNumberPick=parseInt(prompt("Invalid Number: please pick a number again:\n 1-Rock \n 2-Paper \n 3-Scissors" ))
-            }
-            let Player_Choice="";
-            if(playerNumberPick==1){
-                Player_Choice="Rock";
-            }
-            else if(playerNumberPick==2){
-                Player_Choice="Paper";
-            }
-            else{
-                Player_Choice="Scissors";
-            }
-            return Player_Choice;
-
+            // while(counter==0 || isNaN(counter)){
+            //     counter=parseInt(Prompt("Please choose a Valid number for rounds"));
+            // }
+            
+           
+            let computer_choice=ComputerChoice();
+           PlayRound(computer_choice,human_choice);
+           score.textContent=`Your Score: ${HumanScore} & Computer Score: ${ComputerScore}`;
+           
+            
+            
+            
         }
-
         function PlayRound(ComputerChoice,HumanChoice){/* Play a single round */
              
-            if(ComputerChoice=="Rock" && HumanChoice=="Paper"){
-                HumanScore+=1;
-                console.log(`You Win! ${HumanChoice} beats ${ComputerChoice}`);
-            }
-            else if(ComputerChoice=="Rock" && HumanChoice=="Scissors"){
-                ComputerScore+=1;
-                console.log(`You Lose! ${ComputerChoice} beats ${HumanChoice}`);
-            }
-            else if(ComputerChoice=="Paper" && HumanChoice=="Scissors"){
-                HumanScore+=1;
-                console.log(`You Win! ${HumanChoice} beats ${ComputerChoice}`);
-            }
-            else if(ComputerChoice=="Paper" && HumanChoice=="Rock"){
-                ComputerScore+=1;
-                console.log(`You Lose! ${ComputerChoice} beats ${HumanChoice}`);
+             if(ComputerChoice=="Rock" && HumanChoice=="Paper"){
+                 HumanScore+=1;
+                 console.log(`You Win! ${HumanChoice} beats ${ComputerChoice}`);
+                 RoundText.textContent=`You Win! ${HumanChoice} beats ${ComputerChoice}`;
+                 
+             }
+             else if(ComputerChoice=="Rock" && HumanChoice=="Scissors"){
+                 ComputerScore+=1;
+                 console.log(`You Lose! ${ComputerChoice} beats ${HumanChoice}`);
+                 RoundText.textContent=`You Lose! ${ComputerChoice} beats ${HumanChoice}`;
+             }
+             else if(ComputerChoice=="Paper" && HumanChoice=="Scissors"){
+                 HumanScore+=1;
+                 console.log(`You Win! ${HumanChoice} beats ${ComputerChoice}`);
+                 RoundText.textContent=`You Win! ${HumanChoice} beats ${ComputerChoice}`
+             }
+             else if(ComputerChoice=="Paper" && HumanChoice=="Rock"){
+                 ComputerScore+=1;
+                 console.log(`You Lose! ${ComputerChoice} beats ${HumanChoice}`);
+                 RoundText.textContent=`You Lose! ${ComputerChoice} beats ${HumanChoice}`
+ 
+             }
+             else if(ComputerChoice=="Scissors" && HumanChoice=="Rock"){
+                 HumanScore+=1;
+                 console.log(`You Win! ${HumanChoice} beats ${ComputerChoice}`);
+                 RoundText.textContent=`You Win! ${HumanChoice} beats ${ComputerChoice}`;
+             }
+             else if(ComputerChoice=="Scissors" && HumanChoice=="Paper"){
+                 ComputerScore+=1;
+                 console.log(`You Lose! ${ComputerChoice} beats ${HumanChoice}`);
+                 RoundText.textContent=`You Lose! ${ComputerChoice} beats ${HumanChoice}`;
+             }
+             else{
+                 console.log(`Draw! you both Picked ${HumanChoice}`);
+                 RoundText.textContent=`Draw! you both Picked ${HumanChoice}`;
+             }
+ 
+         }
 
-            }
-            else if(ComputerChoice=="Scissors" && HumanChoice=="Rock"){
-                HumanScore+=1;
-                console.log(`You Win! ${HumanChoice} beats ${ComputerChoice}`);
-            }
-            else if(ComputerChoice=="Scissors" && HumanChoice=="Paper"){
-                ComputerScore+=1;
-                console.log(`You Lose! ${ComputerChoice} beats ${HumanChoice}`);
-            }
-            else{
-                console.log(`Draw! you both Picked ${HumanChoice}`);
-            }
+         function Results(){
 
-        }
-
-        function PlayGame(){/* Play x number of rounds*/
-            let counter=parseInt(prompt("Chose how many number of rounds you want to play"));
-
-            while(counter==0 || isNaN(counter)){
-                counter=parseInt(Prompt("Please choose a Valid number for rounds"));
-            }
-            while (counter>0){
-                let Computer_Choice=ComputerChoice();
-                // console.log(Computer_Choice);
-                let Player_Choice=GetHumanChoice();
-                // console.log(Player_Choice);
-                PlayRound(Computer_Choice,Player_Choice);
-                console.log(`User Score: ${HumanScore} and Computer Score: ${ComputerScore}`)
-                counter--;
-            }
             if (ComputerScore>HumanScore){
                 console.log(`You Lost! Your Score was ${HumanScore} and computer's score was ${ComputerScore}`);
+                result.textContent=`You Lost! Your Score was ${HumanScore} and computer's score was ${ComputerScore}`;
             }
             else if(HumanScore>ComputerScore){
                 console.log(`You Won!!! Your Score was ${HumanScore} and Computer Score was ${ComputerScore}`);
+                result.textContent=`You Won!!! Your Score was ${HumanScore} and Computer Score was ${ComputerScore}`;
             }
             else{
                 console.log(`It's a draw you both score ${HumanScore}`);
+                result.textContent=`It's a draw you both score ${HumanScore}`;
             }
-            
-        }
-       
-      PlayGame();
 
-      let PlayAgain;//Restart Functionality
 
-      let AskUser=prompt("Do you want to play again Yes/No");
+         }
 
-      if (AskUser=="Yes" || AskUser=="yes"){
-        PlayAgain=true;
-        ComputerScore=0;
-        HumanScore=0;
-      }else{
-        PlayAgain=false;
-      }
-
-      while(PlayAgain==true){
-        PlayGame();
-        AskUser=prompt("Do you want to play again Yes/No");
-        if (AskUser=="Yes" || AskUser=="yes"){
-        PlayAgain=true;
-        ComputerScore=0;
-        HumanScore=0;
-      }else{
-        PlayAgain=false;
-      }
-      }
-
-      /*Features to be added
-      1-User gets to choose number of rounds -Done
-      2-Score shown every round-done
-      3-Give a restart functionality*/
-
+            //in playgame (update the counter to user for both human and computer)
+            //create another function which will check scores of both 
+            //Create a if else condition to check if scores are 5
 
     </script>
 </body>
