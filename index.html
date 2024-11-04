@@ -36,33 +36,22 @@
         let score=document.querySelector("#scores");
         let restart=document.querySelector("#playAgain");
 
+    restart.style.visibility='hidden';
+        
         rock.addEventListener('click',function(){
             let human_choice='Rock';
-            if(HumanScore==5 || ComputerScore==5){
-                Results();
-            }else{
-                PlayGame(human_choice);
-            }
+           PlayGame(human_choice);
           
            
         })
         paper.addEventListener('click',function(){
             let human_choice='Paper';
           
-            if(HumanScore==5 || ComputerScore==5){
-                Results();
-            }else{
-                PlayGame(human_choice);
-            }
+            PlayGame(human_choice);
         })
         scissors.addEventListener('click',function(){
             let human_choice='Scissors';
-          
-            if(HumanScore==5 || ComputerScore==5){
-                Results();
-            }else{
-                PlayGame(human_choice);
-            }
+          PlayGame(human_choice);
         })
 
         restart.addEventListener('click',restartGame)
@@ -101,6 +90,12 @@
             let computer_choice=ComputerChoice();
            PlayRound(computer_choice,human_choice);
            score.textContent=`Your Score: ${HumanScore} & Computer Score: ${ComputerScore}`;
+
+           if(ComputerScore==5 || HumanScore==5){
+            restart.style.visibility='visible';
+            Results();
+            DisableButton();
+           }
            
             
             
@@ -176,6 +171,11 @@
             RoundText.textContent="";
             score.textContent="";
          }
+         function DisableButton(){
+            rock.disabled=true;
+            paper.disabled=true;
+            scissors.disabled=true;
+        }
 
             //in playgame (update the counter to user for both human and computer)
             //create another function which will check scores of both 
