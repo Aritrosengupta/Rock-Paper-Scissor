@@ -170,11 +170,17 @@
             result.textContent="";
             RoundText.textContent="";
             score.textContent="";
+            EnableButton();
          }
          function DisableButton(){
             rock.disabled=true;
             paper.disabled=true;
             scissors.disabled=true;
+        }
+        function EnableButton(){
+            rock.disabled=false;
+            paper.disabled=false;
+            scissors.disabled=false;
         }
 
             //in playgame (update the counter to user for both human and computer)
