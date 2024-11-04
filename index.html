@@ -114,35 +114,40 @@
                  RoundText.textContent=`You Win! ${HumanChoice} beats ${ComputerChoice}`;
                  
              }
-             else if(ComputerChoice=="Rock" && HumanChoice=="Scissors"){
-                 ComputerScore+=1;
-                 console.log(`You Lose! ${ComputerChoice} beats ${HumanChoice}`);
-                 RoundText.textContent=`You Lose! ${ComputerChoice} beats ${HumanChoice}`;
-             }
+            //  else if(ComputerChoice=="Rock" && HumanChoice=="Scissors"){
+            //      ComputerScore+=1;
+            //      console.log(`You Lose! ${ComputerChoice} beats ${HumanChoice}`);
+            //      RoundText.textContent=`You Lose! ${ComputerChoice} beats ${HumanChoice}`;
+            //  }
              else if(ComputerChoice=="Paper" && HumanChoice=="Scissors"){
                  HumanScore+=1;
                  console.log(`You Win! ${HumanChoice} beats ${ComputerChoice}`);
                  RoundText.textContent=`You Win! ${HumanChoice} beats ${ComputerChoice}`
              }
-             else if(ComputerChoice=="Paper" && HumanChoice=="Rock"){
-                 ComputerScore+=1;
-                 console.log(`You Lose! ${ComputerChoice} beats ${HumanChoice}`);
-                 RoundText.textContent=`You Lose! ${ComputerChoice} beats ${HumanChoice}`
+            //  else if(ComputerChoice=="Paper" && HumanChoice=="Rock"){
+            //      ComputerScore+=1;
+            //      console.log(`You Lose! ${ComputerChoice} beats ${HumanChoice}`);
+            //      RoundText.textContent=`You Lose! ${ComputerChoice} beats ${HumanChoice}`
  
-             }
+            //  }
              else if(ComputerChoice=="Scissors" && HumanChoice=="Rock"){
                  HumanScore+=1;
                  console.log(`You Win! ${HumanChoice} beats ${ComputerChoice}`);
                  RoundText.textContent=`You Win! ${HumanChoice} beats ${ComputerChoice}`;
              }
-             else if(ComputerChoice=="Scissors" && HumanChoice=="Paper"){
-                 ComputerScore+=1;
-                 console.log(`You Lose! ${ComputerChoice} beats ${HumanChoice}`);
-                 RoundText.textContent=`You Lose! ${ComputerChoice} beats ${HumanChoice}`;
-             }
-             else{
+            //  else if(ComputerChoice=="Scissors" && HumanChoice=="Paper"){
+            //      ComputerScore+=1;
+            //      console.log(`You Lose! ${ComputerChoice} beats ${HumanChoice}`);
+            //      RoundText.textContent=`You Lose! ${ComputerChoice} beats ${HumanChoice}`;
+            //  }
+             else if(ComputerChoice==HumanChoice){
+                
                  console.log(`Draw! you both Picked ${HumanChoice}`);
                  RoundText.textContent=`Draw! you both Picked ${HumanChoice}`;
+             }
+             else{
+                ComputerScore+=1;
+                RoundText.textContent=`You Lose! ${ComputerChoice} beats ${HumanChoice}`;
              }
  
          }
