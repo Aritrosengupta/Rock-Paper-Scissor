@@ -22,6 +22,9 @@
     <div id="scores"></div>
     <div id="result"></div>
 </div>
+<div class="restart">
+    <button id="playAgain">Play Again</button>
+</div>
 
 
     <script>
@@ -31,6 +34,7 @@
         let RoundText=document.querySelector("#text");
         let result=document.querySelector("#result");
         let score=document.querySelector("#scores");
+        let restart=document.querySelector("#playAgain");
 
         rock.addEventListener('click',function(){
             let human_choice='Rock';
@@ -60,6 +64,10 @@
                 PlayGame(human_choice);
             }
         })
+
+        restart.addEventListener('click',restartGame)
+
+        
 
 
 
@@ -155,6 +163,13 @@
             }
 
 
+         }
+         function restartGame(){
+            HumanScore=0;
+            ComputerScore=0;
+            result.textContent="";
+            RoundText.textContent="";
+            score.textContent="";
          }
 
             //in playgame (update the counter to user for both human and computer)
